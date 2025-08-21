@@ -30,3 +30,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# CSV Data Files (sensitive business data)
+*.csv
+datasets/
