@@ -1,0 +1,19 @@
+{
+  "name": "metabase-dashboard",
+  "description": "Metabase instance for EightSleep business case analysis",
+  "type": "docker-compose",
+  "ports": [3000],
+  "env": {
+    "MB_DB_TYPE": "postgres",
+    "MB_DB_DBNAME": "metabase",
+    "MB_DB_PORT": "5432",
+    "MB_DB_USER": "metabase",
+    "MB_DB_PASS": "metabase_password",
+    "MB_DB_HOST": "postgres",
+    "JAVA_TIMEZONE": "UTC"
+  },
+  "volumes": {
+    "metabase_data": "/metabase-data",
+    "postgres_data": "/var/lib/postgresql/data"
+  }
+}
