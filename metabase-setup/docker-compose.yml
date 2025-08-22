@@ -7,12 +7,6 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MB_DB_TYPE=postgres
-      - MB_DB_DBNAME=postgres
-      - MB_DB_PORT=5432
-      - MB_DB_USER=postgres
-      - MB_DB_PASS=${{ shared.MB_DB_PASS }}
-      - MB_DB_HOST=${{ shared.MB_DB_HOST }}
       - JAVA_TIMEZONE=UTC
     restart: unless-stopped
     volumes:
