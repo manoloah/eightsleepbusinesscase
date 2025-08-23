@@ -8,9 +8,23 @@ services:
       - "3000:3000"
     environment:
       - JAVA_TIMEZONE=UTC
+      # Database configuration - will be set via environment variables
+      # These can be overridden by Railway environment variables
+      - MB_DB_TYPE=${MB_DB_TYPE:-postgres}
+      - MB_DB_DBNAME=${MB_DB_DBNAME:-metabase}
+      - MB_DB_PORT=${MB_DB_PORT:-5432}
+      - MB_DB_USER=${MB_DB_USER:-metabase}
+      - MB_DB_PASS=${MB_DB_PASS:-}
+      - MB_DB_HOST=${MB_DB_HOST:-}
     restart: unless-stopped
     volumes:
       - metabase_data:/metabase-data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
 volumes:
   metabase_data:
